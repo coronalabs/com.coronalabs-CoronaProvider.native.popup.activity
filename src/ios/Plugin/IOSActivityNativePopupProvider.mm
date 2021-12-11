@@ -308,9 +308,9 @@ IOSActivityNativePopupProvider::PresentController(
 	unsigned int direction )
 {
     
-	UIActivityViewController *controller = [[UIActivityViewController alloc]
-											initWithActivityItems:items applicationActivities:nil];
-    
+    UIActivityViewController *controller = [[UIActivityViewController alloc]
+                                                initWithActivityItems:items applicationActivities:nil];
+    NSLog(@"run1 %@", controller );
 	controller.excludedActivityTypes = excludedActivities;
 	if ( handler )
 	{
@@ -335,8 +335,9 @@ IOSActivityNativePopupProvider::PresentController(
 	else
 	{
 		UIView* view = [GetAppViewController() view];
-		UIPopoverController *popup = [[[UIPopoverController alloc] initWithContentViewController:controller] init];
-
+        
+		UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:controller];
+    
 		CGRect popover;
 		if ( xmin != xmin || ymin != ymin || xmax !=xmax || ymax != ymax )
 		{
@@ -344,7 +345,7 @@ IOSActivityNativePopupProvider::PresentController(
 			popover.origin.x = view.frame.size.width*0.5;
 			popover.origin.y = view.frame.size.height;
 			popover.size.width = 0;
-			popover.size.height = 0;
+            popover.size.height = 0;
 		}
 		else
 		{
@@ -354,7 +355,6 @@ IOSActivityNativePopupProvider::PresentController(
             CGPoint max = [runtime coronaPointToUIKitPoint:CGPointMake(xmax, ymax)];
 			popover = CGRectMake( min.x, min.y, max.x-min.x, max.y-min.y );
 		}
-		
 		if ( 0 == direction )
 		{
 			direction = UIPopoverArrowDirectionAny;
