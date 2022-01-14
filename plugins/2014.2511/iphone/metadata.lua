@@ -4,6 +4,8 @@ local metadata =
 	{
 		format = 'staticLibrary',
 		staticLibs = { 'native-popup-activity', },
+		frameworks = {},
+		frameworksOptional = {},
 	},
 }
 
