@@ -310,7 +310,7 @@ IOSActivityNativePopupProvider::PresentController(
     
     UIActivityViewController *controller = [[UIActivityViewController alloc]
                                                 initWithActivityItems:items applicationActivities:nil];
-    NSLog(@"run1 %@", controller );
+  
 	controller.excludedActivityTypes = excludedActivities;
 	if ( handler )
 	{
